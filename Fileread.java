@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 
 public class Fileread {
     public static void main(String[] args) {
-        String filePath = "C:/Users/hamst/Desktop/zadanie7 2.txt"; // Укажите путь к вашему файлу
+        String filePath = "C:/Users/hamst/Desktop/zadanie7 2.txt"; //путь к файлу
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
-            List<Person> people = new ArrayList<>(); // Список объектов Person
+            List<Person> people = new ArrayList<>(); 
 
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(":");
@@ -31,7 +31,7 @@ public class Fileread {
                 groupPeople.computeIfAbsent(person.getNumber(), k -> new LinkedHashSet<>()).add(person.getName());
             }
 
-            // Вывод результата
+           
             System.out.println(groupPeople);
 
         } catch (IOException e) {
@@ -56,7 +56,7 @@ public class Fileread {
         // Разделение текста на слова
         String[] words = text.split("\\s+");
 
-        // Создание карты для хранения символов и слов, в которых они встречаются
+        // Создание карты для хранения символов и слов
         Map<Character, Set<String>> charWords = new HashMap<>();
 
         // Заполнение карты
@@ -70,7 +70,7 @@ public class Fileread {
             }
         }
 
-        // Определение символов, которые встречаются только в одном слове
+        // Символы только в одном слове
         return charWords.entrySet().stream()
                 .filter(entry -> entry.getValue().size() == 1)
                 .map(Map.Entry::getKey)
